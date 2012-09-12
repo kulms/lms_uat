@@ -57,13 +57,13 @@ if ($userright==1)
 <script LANGUAGE="JavaScript">
 parent.aktiv=1;
 var win = null;
-function edit(id,hw_id)
+function edit(id,hw_id,course_id)
 	{	
 			LeftPosition = (screen.width) ? (screen.width-550)/2 : 0;
 			TopPosition = (screen.height) ? (screen.height-400)/2 : 0;
 			settings =
 			'height='+400+',width='+550+',top='+TopPosition+',left='+LeftPosition+',scrollbars=yes,resizable=yes';		
-			window.open("showtext.php?id=" + id + "&hw_id="+hw_id, "edit", settings);
+			window.open("showtext.php?id=" + id + "&hw_id="+hw_id+ "&courses="+course_id, "edit", settings);
 	}
 </script>
 <script language="JavaScript">
@@ -291,7 +291,7 @@ $hwans=mysql_query("SELECT ha.*, u.login, u.firstname FROM homework_ans ha, user
 				<td  align="center"><a href="mailto:<? echo @mysql_result($userinfo,0,"email");  ?>"><? echo @mysql_result($userinfo,0,"login"); ?></a></td>
 				<td ><a href="showusers.php?id=<? echo $modules;?>&users=<? echo $row["users"];?>"><? echo  @mysql_result($userinfo,0,"firstname")." ".@mysql_result($userinfo,0,"surname"); ?></a></td>
 				<td  align="center">
-				<? if ($row["name"] != ""){ ?><a href="JavaScript:edit(<? echo $row["id"].",$hw_id"; ?>)"><? echo $strHome_LabText;}//echo "Show text"; } ?></a>
+				<? if ($row["name"] != ""){ ?><a href="JavaScript:edit(<? echo $row["id"].",$hw_id,$courses"; ?>)"><? echo $strHome_LabText;}//echo "Show text"; } ?></a>
 				<? if ($row["url"] != ""){ ?><a href="<? echo $row["url"]; ?>" target="_blank"><? echo $strHome_LabUrl;}//echo $row["url"]; } ?></a>
 				<? if ($row["file"] != ""){ ?><a href="../download.php?m=hwans&id=<?php echo $hw_id; ?>&filename=<?php echo $row["file"]?>&courses=<?php echo $courses; ?>" target="_blank"><? echo $strHome_LabFile;}//echo $row["file"]; } ?></a></td>
 				<td align="center" class="red" >
@@ -305,9 +305,9 @@ $hwans=mysql_query("SELECT ha.*, u.login, u.firstname FROM homework_ans ha, user
 					if( ($row["marks"]!="" && $row["marks"]!=none) || ($row["examiner"]!="" && $row["examiner"]!=none) )
 					{	       //echo $row["marks"]." ( by: ".$ex.")";
 						$ex=mysql_query("SELECT u.login FROM users as u WHERE u.id=".$row["examiner"].";");				
-					?><a href="JavaScript:edit(<? echo $row["id"].",$hw_id"; ?>)"><? echo $row["marks"]." (by: ".@mysql_result($ex,0,"login").")"; ?></a>
+					?><a href="JavaScript:edit(<? echo $row["id"].",$hw_id,$courses"; ?>)"><? echo $row["marks"]." (by: ".@mysql_result($ex,0,"login").")"; ?></a>
 					<?	}else{  ?>
-					<a href="JavaScript:edit(<? echo $row["id"].",$hw_id"; ?>)">
+					<a href="JavaScript:edit(<? echo $row["id"].",$hw_id,$courses"; ?>)">
 					<? echo $user->_($strHome_LabNoScore); ?>
 					</a>
 					<?  } ?>

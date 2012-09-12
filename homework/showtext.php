@@ -78,19 +78,21 @@
 					<?
 						$pos = strrpos(@mysql_result($showtext,0,"file"), ".");
 						$rest = substr(@mysql_result($showtext,0,"file"), $pos+1);
-						if($rest == "gif" || $rest == "jpg" || $rest == "jpeg" || $rest == "png"){	
+						//if($rest == "gif" || $rest == "jpg" || $rest == "jpeg" || $rest == "png"){	
 					?>	
-						<img src="../files/homework/ansfiles/<? echo $hw_id; ?>/<? echo @mysql_result($showtext,0,"file");?>" border="0">
+						<!--<img src="../files/homework/ansfiles/<? echo $hw_id; ?>/<? echo @mysql_result($showtext,0,"file");?>" border="0">
+                        <a href="../download.php?m=hwans&id=<?php echo $hw_id; ?>&filename=<?php echo @mysql_result($showtext,0,"file");?>&courses=<?php echo $courses; ?>">-->
 					<?
-						} else {
+						//} else {
 					?>
-					<a href="../files/homework/ansfiles/<? echo $hw_id; ?>/<? echo @mysql_result($showtext,0,"file"); ?>">
+                    <a href="../download.php?m=hwans&id=<?php echo $hw_id; ?>&filename=<?php echo @mysql_result($showtext,0,"file");?>&courses=<?php echo $courses; ?>">
+					<!--<a href="../files/homework/ansfiles/<? echo $hw_id; ?>/<? echo @mysql_result($showtext,0,"file"); ?>">-->
 					<?
 						echo @mysql_result($showtext,0,"file"); 
 					?>
 					</a>
 					<?
-						}
+						//}
 					?>							
 					</td>
 				  </tr>

@@ -21,7 +21,7 @@
 		}else{
 			?>
             
-<meta http-equiv="refresh" content="0;url=https://<?php echo $_SERVER["HTTP_HOST"];?>/lms/login1/ilogins.php">
+<meta http-equiv="refresh" content="0;url=https://<?php echo $_SERVER["HTTP_HOST"];?>/uat_lms/login1/ilogins.php">
  <?php
       }
 ?>
